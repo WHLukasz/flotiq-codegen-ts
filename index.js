@@ -65,6 +65,12 @@ const argv = yargs(process.argv)
         type: "boolean",
         default: false,
         demandOption: false,
+    })
+    .option('apiKey', {
+        description: "Flotiq API key",
+        alias: "k",
+        type: "string",
+        demandOption: false,
     }).help().alias("help", "h").argv;
 
 
@@ -172,21 +178,24 @@ async function watchChanges(apiKey, compileToJs) {
 async function main() {
     const envfiles = ['.env', '.env.local', '.env.development', 'env.local', 'env.development'];
     const envName = "FLOTIQ_API_KEY";
-    let apiKey = ''
-    for (const file of envfiles) {
-        const filepath = path.join(process.cwd(), file)
+    let apiKey = argv['apiKey'] ? argv['apiKey'] : ''
 
-        if (fs.existsSync(filepath)) {
-            dotenv.config({path: filepath})
+    if (!apiKey) {
+        for (const file of envfiles) {
+            const filepath = path.join(process.cwd(), file)
 
-            if (process.env[envName]) {
-                apiKey = process.env[envName];
-                // query = await confirm(`${envName} found in '${file}' file. \n  Do you want to use API key from ${file}?`)
-                // if (query) {
-                //     //using API key from file
-                //     apiKey = process.env[envName];
-                //     break;
-                // }
+            if (fs.existsSync(filepath)) {
+                dotenv.config({ path: filepath })
+
+                if (process.env[envName]) {
+                    apiKey = process.env[envName];
+                    // query = await confirm(`${envName} found in '${file}' file. \n  Do you want to use API key from ${file}?`)
+                    // if (query) {
+                    //     //using API key from file
+                    //     apiKey = process.env[envName];
+                    //     break;
+                    // }
+                }
             }
         }
     }
