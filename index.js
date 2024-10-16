@@ -184,6 +184,7 @@ async function main() {
             }
         }
     }
+    console.log("test console log " . apikey);
 
     if (!apiKey) {
         const answers = await inquirer.prompt([{
