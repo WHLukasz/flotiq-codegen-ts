@@ -180,13 +180,7 @@ async function main() {
             dotenv.config({path: filepath})
 
             if (process.env[envName]) {
-
-                query = await confirm(`${envName} found in '${file}' file. \n  Do you want to use API key from ${file}?`)
-                if (query) {
-                    //using API key from file
-                    apiKey = process.env[envName];
-                    break;
-                }
+                apiKey = process.env[envName]
             }
         }
     }
