@@ -191,7 +191,7 @@ async function main() {
         }
     }
     console.log("test console log ");
-    console.log(apikey);
+    console.log(apiKey);
 
     if (!apiKey) {
         const answers = await inquirer.prompt([{
