@@ -180,11 +180,18 @@ async function main() {
             dotenv.config({path: filepath})
 
             if (process.env[envName]) {
-                apiKey = process.env[envName]
+                apiKey = process.env[envName];
+                // query = await confirm(`${envName} found in '${file}' file. \n  Do you want to use API key from ${file}?`)
+                // if (query) {
+                //     //using API key from file
+                //     apiKey = process.env[envName];
+                //     break;
+                // }
             }
         }
     }
-    console.log("test console log " . apikey);
+    console.log("test console log ");
+    console.log(apikey);
 
     if (!apiKey) {
         const answers = await inquirer.prompt([{
