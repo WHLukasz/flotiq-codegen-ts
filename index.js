@@ -172,7 +172,7 @@ async function watchChanges(apiKey, compileToJs) {
 async function main() {
     const envfiles = ['.env', '.env.local', '.env.development', 'env.local', 'env.development'];
     const envName = "FLOTIQ_API_KEY";
-    let apiKey = '49dcfd12129b44cd79d42a9a369d16bb'
+    let apiKey = '2d1dfb8bc14b7aaf98d2372fba8bde36'
     for (const file of envfiles) {
         const filepath = path.join(process.cwd(), file)
 
