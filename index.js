@@ -190,8 +190,6 @@ async function main() {
             }
         }
     }
-    console.log("test console log ");
-    console.log(apiKey);
 
     if (!apiKey) {
         const answers = await inquirer.prompt([{
